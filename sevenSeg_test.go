@@ -26,6 +26,8 @@ var displayTests = []struct {
 	{FIVE, rpio.High, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High},
 	{SIX, rpio.High, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.High},
 	{SEVEN, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High},
+	{EIGHT, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.High},
+	{NINE, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High},
 }
 
 func TestDisplay(t *testing.T) {

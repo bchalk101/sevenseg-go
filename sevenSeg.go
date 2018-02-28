@@ -33,6 +33,10 @@ const (
 	NINE  = "9"
 )
 
+func NewSevenSeg() *sevenSeg {
+	return &sevenSeg{}
+}
+
 func (s *sevenSeg) Display(item string) error {
 	s.toDisplay = item
 	s.pinD4.WriteState(rpio.High)
@@ -65,12 +69,16 @@ func (s *sevenSeg) Display(item string) error {
 	case SEVEN:
 		s.clear()
 		s.writeASeven()
+	case EIGHT:
+		s.clear()
+		s.writeAEight()
+	case NINE:
+		s.clear()
+		s.writeANine()
 	}
 
 	return nil
 }
-
-
 
 func (s *sevenSeg) clear() {
 	s.pinA.WriteState(rpio.Low)
@@ -137,4 +145,21 @@ func (s *sevenSeg) writeASeven() {
 	s.pinA.WriteState(rpio.High)
 	s.pinB.WriteState(rpio.High)
 	s.pinC.WriteState(rpio.High)
+}
+
+func (s *sevenSeg) writeANine() {
+	s.pinA.WriteState(rpio.High)
+	s.pinB.WriteState(rpio.High)
+	s.pinC.WriteState(rpio.High)
+	s.pinF.WriteState(rpio.High)
+	s.pinG.WriteState(rpio.High)
+}
+func (s *sevenSeg) writeAEight() {
+	s.pinA.WriteState(rpio.High)
+	s.pinB.WriteState(rpio.High)
+	s.pinC.WriteState(rpio.High)
+	s.pinD.WriteState(rpio.High)
+	s.pinE.WriteState(rpio.High)
+	s.pinF.WriteState(rpio.High)
+	s.pinG.WriteState(rpio.High)
 }
