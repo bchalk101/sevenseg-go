@@ -11,8 +11,8 @@ type raspberryPiPinImpl struct {
 	rpioPin rpio.Pin
 }
 
-func NewRaspberryPiPin(pin int) raspberryPiPinImpl {
-	return raspberryPiPinImpl{
+func NewRaspberryPiPin(pin int) RaspberryPiPin {
+	return &raspberryPiPinImpl{
 		rpioPin: rpio.Pin(pin),
 	}
 }

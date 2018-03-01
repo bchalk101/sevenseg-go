@@ -33,8 +33,17 @@ const (
 	NINE  = "9"
 )
 
-func NewSevenSeg() *sevenSeg {
-	return &sevenSeg{}
+func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int) *sevenSeg {
+	return &sevenSeg{
+		pinA: NewRaspberryPiPin(pinA),
+		pinB: NewRaspberryPiPin(pinB),
+		pinC: NewRaspberryPiPin(pinC),
+		pinD: NewRaspberryPiPin(pinD),
+		pinE: NewRaspberryPiPin(pinE),
+		pinF: NewRaspberryPiPin(pinF),
+		pinG: NewRaspberryPiPin(pinG),
+		pinH: NewRaspberryPiPin(pinH),
+	}
 }
 
 func (s *sevenSeg) Display(item string) error {

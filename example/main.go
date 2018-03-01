@@ -15,7 +15,7 @@ func main() {
 	}
 	defer rpio.Close()
 
-	digit := sevenseg.NewSevenSeg()
+	digit := sevenseg.NewSevenSeg(5,6,13,19,26,16,20,21)
 	for {
 		digit.Display(sevenseg.ZERO)
 		time.Sleep(time.Second)
