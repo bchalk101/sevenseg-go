@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/stianeikeland/go-rpio"
 	"log"
-	"github.com/sevenseg-go"
+	"github.com/bchalk101/sevenseg-go"
 	"time"
 )
 
