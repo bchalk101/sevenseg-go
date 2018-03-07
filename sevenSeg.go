@@ -16,7 +16,7 @@ type sevenSeg struct {
 	pinF      RaspberryPiPin
 	pinG      RaspberryPiPin
 	pinH      RaspberryPiPin
-	pinD4     RaspberryPiPin
+	pinSegmentSelect     RaspberryPiPin
 }
 
 const (
@@ -33,7 +33,7 @@ const (
 	NINE  = "9"
 )
 
-func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int, pinD4 int) *sevenSeg {
+func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int, pinSegmentSelect int) *sevenSeg {
 
 	display := new(sevenSeg)
 	display.pinA = NewRaspberryPiPin(pinA)
@@ -44,7 +44,7 @@ func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pin
 	display.pinF = NewRaspberryPiPin(pinF)
 	display.pinG = NewRaspberryPiPin(pinG)
 	display.pinH = NewRaspberryPiPin(pinH)
-	display.pinD4 = NewRaspberryPiPin(pinD4)
+	display.pinSegmentSelect = NewRaspberryPiPin(pinSegmentSelect)
 
 
 	display.pinA.SetMode(rpio.Output)
@@ -55,7 +55,7 @@ func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pin
 	display.pinF.SetMode(rpio.Output)
 	display.pinG.SetMode(rpio.Output)
 	display.pinH.SetMode(rpio.Output)
-	display.pinD4.SetMode(rpio.Output)
+	display.pinSegmentSelect.SetMode(rpio.Output)
 
 
 	return display
@@ -63,7 +63,7 @@ func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pin
 
 func (s *sevenSeg) Display(item string) error {
 	s.toDisplay = item
-	s.pinD4.WriteState(rpio.High)
+	s.pinSegmentSelect.WriteState(rpio.High)
 
 	switch s.toDisplay {
 	case DOT:

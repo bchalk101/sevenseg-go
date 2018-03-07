@@ -40,7 +40,7 @@ func TestDisplay(t *testing.T) {
 	sevenSeg.pinF = new(mockRaspberryPiPinImpl)
 	sevenSeg.pinG = new(mockRaspberryPiPinImpl)
 	sevenSeg.pinH = new(mockRaspberryPiPinImpl)
-	sevenSeg.pinD4 = new(mockRaspberryPiPinImpl)
+	sevenSeg.pinSegmentSelect = new(mockRaspberryPiPinImpl)
 
 	for _, testState := range displayTests {
 		sevenSeg.Display(testState.display)
@@ -76,8 +76,8 @@ func TestDisplay(t *testing.T) {
 			t.Errorf("Display %v: Expected Pin H to be %v but was %v", testState.display, testState.pinHState, sevenSeg.pinH.ReadState())
 		}
 
-		if sevenSeg.pinD4.ReadState() != testState.pinD4State {
-			t.Errorf("Display %v: Expected Pin D4 to be %v but was %v", testState.display, testState.pinD4State, sevenSeg.pinD4.ReadState())
+		if sevenSeg.pinSegmentSelect.ReadState() != testState.pinD4State {
+			t.Errorf("Display %v: Expected Pin D4 to be %v but was %v", testState.display, testState.pinD4State, sevenSeg.pinSegmentSelect.ReadState())
 		}
 	}
 }
