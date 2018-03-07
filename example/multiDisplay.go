@@ -19,7 +19,7 @@ func main() {
 
 	digit := sevenseg.NewDisplay(5,6,13,19,26,16,20,21, 12, 7)
 	for {
-		for i := 100; i > 0 ; i-- {
+		for i := 99; i > 0 ; i-- {
 			digit.Print(strconv.Itoa(i))
 			time.Sleep(time.Second )
 		}
