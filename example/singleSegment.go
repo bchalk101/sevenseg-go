@@ -5,6 +5,7 @@ import (
 	"log"
 	"github.com/bchalk101/sevenseg-go"
 	"time"
+	"strconv"
 )
 
 func main() {
@@ -17,25 +18,12 @@ func main() {
 
 	digit := sevenseg.NewSevenSeg(5,6,13,19,26,16,20,21, 12)
 	for {
-		digit.Display(sevenseg.ZERO)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.ONE)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.TWO)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.THREE)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.FOUR)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.FIVE)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.SIX)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.SEVEN)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.EIGHT)
-		time.Sleep(time.Second )
-		digit.Display(sevenseg.NINE)
-		time.Sleep(time.Second )
+		for i := 9; i > 0 ; i-- {
+			digit.Display(strconv.Itoa(i))
+			time.Sleep(time.Second )
+			if i == 0 {
+				i = 9
+			}
+		}
 	}
 }
