@@ -23,3 +23,9 @@ func (r *mockRaspberryPiPinImpl) WriteState(state rpio.State) {
 	r.stateOfPin = state
 	r.writeStateCalled = true
 }
+
+func (r *mockRaspberryPiPinImpl) SetMode(mode rpio.Mode) {
+
+}
+
+

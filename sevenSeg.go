@@ -33,17 +33,32 @@ const (
 	NINE  = "9"
 )
 
-func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int) *sevenSeg {
-	return &sevenSeg{
-		pinA: NewRaspberryPiPin(pinA),
-		pinB: NewRaspberryPiPin(pinB),
-		pinC: NewRaspberryPiPin(pinC),
-		pinD: NewRaspberryPiPin(pinD),
-		pinE: NewRaspberryPiPin(pinE),
-		pinF: NewRaspberryPiPin(pinF),
-		pinG: NewRaspberryPiPin(pinG),
-		pinH: NewRaspberryPiPin(pinH),
-	}
+func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int, pinD4 int) *sevenSeg {
+
+	display := new(sevenSeg)
+	display.pinA = NewRaspberryPiPin(pinA)
+	display.pinB = NewRaspberryPiPin(pinB)
+	display.pinC = NewRaspberryPiPin(pinC)
+	display.pinD = NewRaspberryPiPin(pinD)
+	display.pinE = NewRaspberryPiPin(pinE)
+	display.pinF = NewRaspberryPiPin(pinF)
+	display.pinG = NewRaspberryPiPin(pinG)
+	display.pinH = NewRaspberryPiPin(pinH)
+	display.pinD4 = NewRaspberryPiPin(pinD4)
+
+
+	display.pinA.SetMode(rpio.Output)
+	display.pinB.SetMode(rpio.Output)
+	display.pinC.SetMode(rpio.Output)
+	display.pinD.SetMode(rpio.Output)
+	display.pinE.SetMode(rpio.Output)
+	display.pinF.SetMode(rpio.Output)
+	display.pinG.SetMode(rpio.Output)
+	display.pinH.SetMode(rpio.Output)
+	display.pinD4.SetMode(rpio.Output)
+
+
+	return display
 }
 
 func (s *sevenSeg) Display(item string) error {
