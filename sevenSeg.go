@@ -68,7 +68,7 @@ func (s *sevenSeg) Display(item string) error {
 	switch s.toDisplay {
 	case DOT:
 		s.clear()
-		s.pinH.WriteState(rpio.High)
+		s.pinH.WriteState(rpio.Low)
 	case ZERO:
 		s.clear()
 		s.writeAZero()
@@ -105,6 +105,80 @@ func (s *sevenSeg) Display(item string) error {
 }
 
 func (s *sevenSeg) clear() {
+	s.pinA.WriteState(rpio.High)
+	s.pinB.WriteState(rpio.High)
+	s.pinC.WriteState(rpio.High)
+	s.pinD.WriteState(rpio.High)
+	s.pinE.WriteState(rpio.High)
+	s.pinF.WriteState(rpio.High)
+	s.pinG.WriteState(rpio.High)
+	s.pinH.WriteState(rpio.High)
+}
+func (s *sevenSeg) writeAZero() {
+	s.pinA.WriteState(rpio.Low)
+	s.pinB.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+	s.pinD.WriteState(rpio.Low)
+	s.pinE.WriteState(rpio.Low)
+	s.pinF.WriteState(rpio.Low)
+}
+func (s *sevenSeg) writeAFive() {
+	s.pinA.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+	s.pinD.WriteState(rpio.Low)
+	s.pinF.WriteState(rpio.Low)
+	s.pinG.WriteState(rpio.Low)
+}
+func (s *sevenSeg) writeAFour() {
+	s.pinB.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+	s.pinF.WriteState(rpio.Low)
+	s.pinG.WriteState(rpio.Low)
+}
+
+func (s *sevenSeg) writeAOne() {
+	s.pinB.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+}
+func (s *sevenSeg) writeATwo() {
+	s.pinA.WriteState(rpio.Low)
+	s.pinB.WriteState(rpio.Low)
+	s.pinD.WriteState(rpio.Low)
+	s.pinE.WriteState(rpio.Low)
+	s.pinG.WriteState(rpio.Low)
+}
+
+func (s *sevenSeg) writeThree() {
+	s.pinA.WriteState(rpio.Low)
+	s.pinB.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+	s.pinD.WriteState(rpio.Low)
+	s.pinG.WriteState(rpio.Low)
+}
+
+func (s *sevenSeg) writeASix() {
+	s.pinA.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+	s.pinD.WriteState(rpio.Low)
+	s.pinE.WriteState(rpio.Low)
+	s.pinF.WriteState(rpio.Low)
+	s.pinG.WriteState(rpio.Low)
+}
+
+func (s *sevenSeg) writeASeven() {
+	s.pinA.WriteState(rpio.Low)
+	s.pinB.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+}
+
+func (s *sevenSeg) writeANine() {
+	s.pinA.WriteState(rpio.Low)
+	s.pinB.WriteState(rpio.Low)
+	s.pinC.WriteState(rpio.Low)
+	s.pinF.WriteState(rpio.Low)
+	s.pinG.WriteState(rpio.Low)
+}
+func (s *sevenSeg) writeAEight() {
 	s.pinA.WriteState(rpio.Low)
 	s.pinB.WriteState(rpio.Low)
 	s.pinC.WriteState(rpio.Low)
@@ -112,78 +186,4 @@ func (s *sevenSeg) clear() {
 	s.pinE.WriteState(rpio.Low)
 	s.pinF.WriteState(rpio.Low)
 	s.pinG.WriteState(rpio.Low)
-	s.pinH.WriteState(rpio.Low)
-}
-func (s *sevenSeg) writeAZero() {
-	s.pinA.WriteState(rpio.High)
-	s.pinB.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-	s.pinD.WriteState(rpio.High)
-	s.pinE.WriteState(rpio.High)
-	s.pinF.WriteState(rpio.High)
-}
-func (s *sevenSeg) writeAFive() {
-	s.pinA.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-	s.pinD.WriteState(rpio.High)
-	s.pinF.WriteState(rpio.High)
-	s.pinG.WriteState(rpio.High)
-}
-func (s *sevenSeg) writeAFour() {
-	s.pinB.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-	s.pinF.WriteState(rpio.High)
-	s.pinG.WriteState(rpio.High)
-}
-
-func (s *sevenSeg) writeAOne() {
-	s.pinB.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-}
-func (s *sevenSeg) writeATwo() {
-	s.pinA.WriteState(rpio.High)
-	s.pinB.WriteState(rpio.High)
-	s.pinD.WriteState(rpio.High)
-	s.pinE.WriteState(rpio.High)
-	s.pinG.WriteState(rpio.High)
-}
-
-func (s *sevenSeg) writeThree() {
-	s.pinA.WriteState(rpio.High)
-	s.pinB.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-	s.pinD.WriteState(rpio.High)
-	s.pinG.WriteState(rpio.High)
-}
-
-func (s *sevenSeg) writeASix() {
-	s.pinA.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-	s.pinD.WriteState(rpio.High)
-	s.pinE.WriteState(rpio.High)
-	s.pinF.WriteState(rpio.High)
-	s.pinG.WriteState(rpio.High)
-}
-
-func (s *sevenSeg) writeASeven() {
-	s.pinA.WriteState(rpio.High)
-	s.pinB.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-}
-
-func (s *sevenSeg) writeANine() {
-	s.pinA.WriteState(rpio.High)
-	s.pinB.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-	s.pinF.WriteState(rpio.High)
-	s.pinG.WriteState(rpio.High)
-}
-func (s *sevenSeg) writeAEight() {
-	s.pinA.WriteState(rpio.High)
-	s.pinB.WriteState(rpio.High)
-	s.pinC.WriteState(rpio.High)
-	s.pinD.WriteState(rpio.High)
-	s.pinE.WriteState(rpio.High)
-	s.pinF.WriteState(rpio.High)
-	s.pinG.WriteState(rpio.High)
 }

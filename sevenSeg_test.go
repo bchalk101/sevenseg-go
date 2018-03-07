@@ -17,17 +17,17 @@ var displayTests = []struct {
 	pinHState  rpio.State
 	pinD4State rpio.State
 }{
-	{DOT, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High},
-	{ZERO, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High},
-	{ONE, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High},
-	{TWO, rpio.High, rpio.High, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High, rpio.Low, rpio.High},
-	{THREE, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.High},
-	{FOUR, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High},
-	{FIVE, rpio.High, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High},
-	{SIX, rpio.High, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.High},
-	{SEVEN, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High},
-	{EIGHT, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.High},
-	{NINE, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High},
+	{DOT, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.High},
+	{ZERO, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High},
+	{ONE, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High},
+	{TWO, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.High, rpio.High},
+	{THREE, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High, rpio.High},
+	{FOUR, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High},
+	{FIVE, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High},
+	{SIX, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High},
+	{SEVEN, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High},
+	{EIGHT, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High},
+	{NINE, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High},
 }
 
 func TestDisplay(t *testing.T) {
