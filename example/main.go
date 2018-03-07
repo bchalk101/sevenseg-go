@@ -5,7 +5,6 @@ import (
 	"log"
 	"github.com/bchalk101/sevenseg-go"
 	"time"
-	"fmt"
 )
 
 func main() {
