@@ -4,8 +4,6 @@ import (
 	"github.com/stianeikeland/go-rpio"
 	"log"
 	"github.com/bchalk101/sevenseg-go"
-	"time"
-	"strconv"
 )
 
 func main() {
