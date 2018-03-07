@@ -31,6 +31,7 @@ const (
 	SEVEN = "7"
 	EIGHT = "8"
 	NINE  = "9"
+	CLEAR = "000000"
 )
 
 func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int, pinSegmentSelect int) *sevenSeg {
@@ -66,6 +67,8 @@ func (s *sevenSeg) Display(item string) error {
 	s.pinSegmentSelect.WriteState(rpio.High)
 
 	switch s.toDisplay {
+	case CLEAR:
+		s.clear()
 	case DOT:
 		s.clear()
 		s.pinH.WriteState(rpio.Low)
@@ -113,6 +116,7 @@ func (s *sevenSeg) clear() {
 	s.pinF.WriteState(rpio.High)
 	s.pinG.WriteState(rpio.High)
 	s.pinH.WriteState(rpio.High)
+	s.pinSegmentSelect.WriteState(rpio.Low)
 }
 func (s *sevenSeg) writeAZero() {
 	s.pinA.WriteState(rpio.Low)

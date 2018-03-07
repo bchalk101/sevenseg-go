@@ -24,6 +24,9 @@ func (d *Display) Print(number string) {
 
 }
 func (d *Display) display(number string) {
+	for i := range d.segment {
+		d.segment[i].Display(CLEAR)
+	}
 	for i, num := range number {
 		d.segment[i].Display(string(num))
 	}

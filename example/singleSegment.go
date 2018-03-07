@@ -18,7 +18,7 @@ func main() {
 
 	digit := sevenseg.NewSevenSeg(5,6,13,19,26,16,20,21, 12)
 	for {
-		for i := 9; i > 0 ; i-- {
+		for i := 9; i >= 0 ; i-- {
 			digit.Display(strconv.Itoa(i))
 			time.Sleep(time.Second )
 			if i == 0 {
