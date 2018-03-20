@@ -9,12 +9,6 @@ type mockRaspberryPiPinImpl struct {
 }
 
 
-func NewMockRaspberryPiPin(pin int) mockRaspberryPiPinImpl {
-	return mockRaspberryPiPinImpl{
-
-	}
-}
-
 func (r *mockRaspberryPiPinImpl) ReadState() rpio.State {
 	return r.stateOfPin
 }

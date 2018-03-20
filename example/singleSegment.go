@@ -16,7 +16,7 @@ func main() {
 	}
 	defer rpio.Close()
 
-	digit := sevenseg.NewSevenSeg(5,6,13,19,26,16,20,21, 12)
+	digit := sevenseg.NewSevenSeg(5,6,13,19,26,16,20,21)
 	for {
 		for i := 9; i >= 0 ; i-- {
 			digit.Display(strconv.Itoa(i))
