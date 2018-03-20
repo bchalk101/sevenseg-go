@@ -10,6 +10,7 @@ const SIZE = 2
 type Display struct {
 	segment          sevenSegDisplay
 	segmentActivePin [SIZE]RaspberryPiPin
+	displayStarted   bool
 }
 
 func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int, pinD4 int, pinD3 int) *Display {
@@ -25,8 +26,13 @@ func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG
 
 func (d *Display) Print(number string) {
 	numberChannel := make(chan string, 1)
-	go d.display(numberChannel)
-	numberChannel <- number
+	if !d.displayStarted {
+		go d.display(numberChannel)
+		numberChannel <- number
+		d.displayStarted = true
+	} else {
+		numberChannel <- number
+	}
 }
 
 func (d *Display) display(numberChannel chan string) {
