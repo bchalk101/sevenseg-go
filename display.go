@@ -24,22 +24,30 @@ func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG
 }
 
 func (d *Display) Print(number string) {
-	numberChannel := make(chan string)
+	numberChannel := make(chan string, 1)
+	go d.display(numberChannel)
 	numberChannel <- number
-	go d.display(<-numberChannel)
 }
 
-func (d *Display) display(number string) {
-	fmt.Printf("Displaying %v\n", number)
+func (d *Display) display(numberChannel chan string) {
+	var number string
+	for {
+		select {
+		case number = <-numberChannel:
+		default:
+		}
+		fmt.Printf("Displaying %v\n", number)
 
-	for i := range d.segmentActivePin {
-		d.segmentActivePin[i].WriteState(rpio.High)
-		d.segment.Display(CLEAR)
+		for i := range d.segmentActivePin {
+			d.segmentActivePin[i].WriteState(rpio.High)
+			d.segment.Display(CLEAR)
+		}
+		for i, num := range number {
+			d.chooseSegment(i)
+			d.segment.Display(string(num))
+		}
 	}
-	for i, num := range number {
-		d.chooseSegment(i)
-		d.segment.Display(string(num))
-	}
+
 }
 
 func (d *Display) chooseSegment(segment int) {
