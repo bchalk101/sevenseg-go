@@ -1,12 +1,11 @@
-package multiSegExample
+package main
 
 import (
 	"github.com/stianeikeland/go-rpio"
 	"log"
-	//"github.com/bchalk101/sevenseg-go"
+	"github.com/bchalk101/sevenseg-go"
 	"strconv"
 	"time"
-	"github.com/sevenseg-go"
 )
 
 func main() {

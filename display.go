@@ -9,18 +9,14 @@ type Display struct {
 	segmentActivePin [SIZE]RaspberryPiPin
 }
 
-func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int) *Display {
+func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int, pinD4 int, pinD3 int) *Display {
 	display := new(Display)
 
-<<<<<<< Updated upstream
 	display.segment = NewSevenSeg(pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinH)
 
 	display.segmentActivePin[0] = NewRaspberryPiPin(pinD4)
 	display.segmentActivePin[1] = NewRaspberryPiPin(pinD3)
-=======
-	display.segment[0] = NewSevenSeg(pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinH)
-	display.segment[1] = NewSevenSeg(pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinH)
->>>>>>> Stashed changes
+
 
 	return display
 }

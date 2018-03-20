@@ -44,20 +44,6 @@ func NewSevenSeg(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pin
 	display.pinF = NewRaspberryPiPin(pinF)
 	display.pinG = NewRaspberryPiPin(pinG)
 	display.pinH = NewRaspberryPiPin(pinH)
-<<<<<<< Updated upstream
-
-
-	display.pinA.SetMode(rpio.Output)
-	display.pinB.SetMode(rpio.Output)
-	display.pinC.SetMode(rpio.Output)
-	display.pinD.SetMode(rpio.Output)
-	display.pinE.SetMode(rpio.Output)
-	display.pinF.SetMode(rpio.Output)
-	display.pinG.SetMode(rpio.Output)
-	display.pinH.SetMode(rpio.Output)
-
-=======
->>>>>>> Stashed changes
 
 	return display
 }
