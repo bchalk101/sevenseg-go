@@ -20,14 +20,13 @@ func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG
 	display.segmentActivePin[0] = NewRaspberryPiPin(pinD4)
 	display.segmentActivePin[1] = NewRaspberryPiPin(pinD3)
 
-
 	return display
 }
 
 func (d *Display) Print(number string) {
-		for {
-			d.display(number)
-		}
+	numberChannel := make(chan string)
+	numberChannel <- number
+	go d.display(<-numberChannel)
 }
 
 func (d *Display) display(number string) {
@@ -44,7 +43,7 @@ func (d *Display) display(number string) {
 }
 
 func (d *Display) chooseSegment(segment int) {
-	for i := range d.segmentActivePin  {
+	for i := range d.segmentActivePin {
 		if i == segment {
 			d.segmentActivePin[i].WriteState(rpio.High)
 		} else {
