@@ -14,9 +14,10 @@ type raspberryPiPinImpl struct {
 }
 
 func NewRaspberryPiPin(pin int) RaspberryPiPin {
-	return &raspberryPiPinImpl{
-		rpioPin: rpio.Pin(pin),
-	}
+	raspberryPiPin := new(raspberryPiPinImpl)
+	raspberryPiPin.rpioPin = rpio.Pin(pin)
+	raspberryPiPin.SetMode(rpio.Output)
+	return raspberryPiPin
 }
 
 func (r *raspberryPiPinImpl) ReadState() rpio.State {
