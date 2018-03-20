@@ -40,9 +40,9 @@ func (d *Display) display(numberChannel chan string) {
 	for {
 		select {
 		case number = <-numberChannel:
+			fmt.Printf("Displaying %v\n", number)
 		default:
 		}
-		fmt.Printf("Displaying %v\n", number)
 
 		for i := range d.segmentActivePin {
 			d.segmentActivePin[i].WriteState(rpio.High)
