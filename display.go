@@ -4,13 +4,14 @@ const SIZE = 2
 
 type Display struct {
 	segment [SIZE]sevenSegDisplay
+	segmentSwitch [SIZE]RaspberryPiPin
 }
 
 func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG int, pinH int, pinD4 int, pinD3 int) *Display {
 	display := new(Display)
 
-	display.segment[0] = NewSevenSeg(pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinH, pinD4)
-	display.segment[1] = NewSevenSeg(pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinH, pinD3)
+	display.segment[0] = NewSevenSeg(pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinH)
+	display.segment[1] = NewSevenSeg(pinA, pinB, pinC, pinD, pinE, pinF, pinG, pinH)
 
 	return display
 }

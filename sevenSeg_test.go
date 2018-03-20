@@ -15,19 +15,18 @@ var displayTests = []struct {
 	pinFState  rpio.State
 	pinGState  rpio.State
 	pinHState  rpio.State
-	pinD4State rpio.State
 }{
-	{DOT, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low, rpio.High},
-	{ZERO, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High},
-	{ONE, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High},
-	{TWO, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.High, rpio.High},
-	{THREE, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High, rpio.High},
-	{FOUR, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High},
-	{FIVE, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High},
-	{SIX, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High},
-	{SEVEN, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High},
-	{EIGHT, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High},
-	{NINE, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High},
+	{DOT, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High, rpio.Low},
+	{ZERO, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High},
+	{ONE, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High},
+	{TWO, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.High},
+	{THREE, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.High},
+	{FOUR, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High},
+	{FIVE, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.High},
+	{SIX, rpio.Low, rpio.High, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High},
+	{SEVEN, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.High, rpio.High, rpio.High},
+	{EIGHT, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.Low, rpio.High},
+	{NINE, rpio.Low, rpio.Low, rpio.Low, rpio.High, rpio.High, rpio.Low, rpio.Low, rpio.High},
 }
 
 func TestDisplay(t *testing.T) {
@@ -40,7 +39,6 @@ func TestDisplay(t *testing.T) {
 	sevenSeg.pinF = new(mockRaspberryPiPinImpl)
 	sevenSeg.pinG = new(mockRaspberryPiPinImpl)
 	sevenSeg.pinH = new(mockRaspberryPiPinImpl)
-	sevenSeg.pinSegmentSelect = new(mockRaspberryPiPinImpl)
 
 	for _, testState := range displayTests {
 		sevenSeg.Display(testState.display)
@@ -74,10 +72,6 @@ func TestDisplay(t *testing.T) {
 
 		if sevenSeg.pinH.ReadState() != testState.pinHState {
 			t.Errorf("Display %v: Expected Pin H to be %v but was %v", testState.display, testState.pinHState, sevenSeg.pinH.ReadState())
-		}
-
-		if sevenSeg.pinSegmentSelect.ReadState() != testState.pinD4State {
-			t.Errorf("Display %v: Expected Pin D4 to be %v but was %v", testState.display, testState.pinD4State, sevenSeg.pinSegmentSelect.ReadState())
 		}
 	}
 }
