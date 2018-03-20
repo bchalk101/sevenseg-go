@@ -22,12 +22,9 @@ func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG
 }
 
 func (d *Display) Print(number string) {
-	go func() {
 		for {
 			d.display(number)
 		}
-	}()
-
 }
 
 func (d *Display) display(number string) {
