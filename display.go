@@ -1,6 +1,9 @@
 package sevenseg
 
-import "github.com/stianeikeland/go-rpio"
+import (
+	"github.com/stianeikeland/go-rpio"
+	"fmt"
+)
 
 const SIZE = 2
 
@@ -28,12 +31,24 @@ func (d *Display) Print(number string) {
 }
 
 func (d *Display) display(number string) {
+	fmt.Printf("Displaying %v\n", number)
+
 	for i := range d.segmentActivePin {
 		d.segmentActivePin[i].WriteState(rpio.High)
 		d.segment.Display(CLEAR)
 	}
 	for i, num := range number {
-		d.segmentActivePin[i].WriteState(rpio.High)
+		d.chooseSegment(i)
 		d.segment.Display(string(num))
+	}
+}
+
+func (d *Display) chooseSegment(segment int) {
+	for i := range d.segmentActivePin  {
+		if i == segment {
+			d.segmentActivePin[i].WriteState(rpio.High)
+		} else {
+			d.segmentActivePin[i].WriteState(rpio.Low)
+		}
 	}
 }
