@@ -49,14 +49,20 @@ func (d *Display) display() {
 			}
 		default:
 		}
-
-
 		for i, num := range number {
+			d.deselectAllSegments()
+			d.segment.Display(CLEAR)
 			d.chooseSegment(i)
 			d.segment.Display(string(num))
 		}
 	}
 
+}
+
+func (d *Display) deselectAllSegments() {
+	for i := range d.segmentActivePin {
+		d.segmentActivePin[i].WriteState(rpio.Low)
+	}
 }
 
 func (d *Display) chooseSegment(segment int) {
