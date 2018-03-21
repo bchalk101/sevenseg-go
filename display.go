@@ -44,7 +44,7 @@ func (d *Display) display() {
 		case number = <-d.numberChannel:
 			fmt.Printf("Changing to %v\n", number)
 			for i := range d.segmentActivePin {
-				d.segmentActivePin[i].WriteState(rpio.High)
+				d.segmentActivePin[i].WriteState(rpio.Low)
 				d.segment.Display(CLEAR)
 			}
 		default:
@@ -52,7 +52,7 @@ func (d *Display) display() {
 		for i, num := range number {
 			d.deselectAllSegments()
 			d.segment.Display(CLEAR)
-			d.chooseSegment(i)
+			d.segmentActivePin[i].WriteState(rpio.Low)
 			d.segment.Display(string(num))
 		}
 	}
@@ -61,7 +61,7 @@ func (d *Display) display() {
 
 func (d *Display) deselectAllSegments() {
 	for i := range d.segmentActivePin {
-		d.segmentActivePin[i].WriteState(rpio.Low)
+		d.segmentActivePin[i].WriteState(rpio.High)
 	}
 }
 
