@@ -28,7 +28,7 @@ func NewDisplay(pinA int, pinB int, pinC int, pinD int, pinE int, pinF int, pinG
 }
 func (display *Display) setupDisplayChannel() {
 	display.numberChannel = make(chan string, 1)
-	display.numberChannel <- "00"
+	display.numberChannel <- "56"
 	go display.display()
 }
 
