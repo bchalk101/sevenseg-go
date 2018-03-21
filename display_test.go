@@ -7,10 +7,8 @@ import (
 
 func TestDisplayTwoDigits(t *testing.T) {
 
-	display := new(Display)
-	display.segment = new(sevenSegMock)
-	display.segmentActivePin[0] = new(mockRaspberryPiPinImpl)
-	display.segmentActivePin[1] = new(mockRaspberryPiPinImpl)
+	display := SetupNewTestDisplay()
+
 	display.Print("99")
 
 	if display.segment.(*sevenSegMock).number != "9" {

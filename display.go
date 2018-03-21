@@ -43,13 +43,14 @@ func (d *Display) display() {
 		select {
 		case number = <-d.numberChannel:
 			fmt.Printf("Changing to %v\n", number)
+			for i := range d.segmentActivePin {
+				d.segmentActivePin[i].WriteState(rpio.High)
+				d.segment.Display(CLEAR)
+			}
 		default:
 		}
 
-		for i := range d.segmentActivePin {
-			d.segmentActivePin[i].WriteState(rpio.High)
-			d.segment.Display(CLEAR)
-		}
+
 		for i, num := range number {
 			d.chooseSegment(i)
 			d.segment.Display(string(num))

@@ -6,7 +6,6 @@ import (
 	"github.com/bchalk101/sevenseg-go"
 	"strconv"
 	"time"
-	//"fmt"
 )
 
 func main() {
